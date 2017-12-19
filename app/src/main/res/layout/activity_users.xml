@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#1d1d1b"
     tools:context="com.example.a2dam.proyectoquicktrade.UsersActivity">
 
 </android.support.constraint.ConstraintLayout>

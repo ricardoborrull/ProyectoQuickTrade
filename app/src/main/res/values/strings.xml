@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">ProyectoQuickTrade</string>
-    <string name="title_activity_login">Sign in</string>
+    <string name="app_name">Quick Trade - Ricardo Borrull</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

@@ -11,13 +11,15 @@ public class Usuario {
     private String apellidos;
     private String correo;
     private String direccion;
+    private String password;
 
-    public Usuario(String user, String nombre, String apellidos, String correo, String direccion) {
+    public Usuario(String user, String nombre, String apellidos, String correo, String direccion, String password) {
         this.user = user;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.correo = correo;
         this.direccion = direccion;
+        this.password = password;
     }
 
     public String getUser() {
@@ -60,6 +62,14 @@ public class Usuario {
         this.direccion = direccion;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
@@ -68,6 +78,7 @@ public class Usuario {
                 ", apellidos='" + apellidos + '\'' +
                 ", correo='" + correo + '\'' +
                 ", direccion='" + direccion + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

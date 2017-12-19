@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, RegistrarActivity.class);
+                Intent i = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(i);
             }
         });
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, RegistrarActivity.class);
+                Intent i = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(i);
             }
         });
