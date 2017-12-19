@@ -32,6 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
 
         bbdd = (FirebaseDatabase.getInstance().getReference("usuario"));
+        //aaaaa
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
