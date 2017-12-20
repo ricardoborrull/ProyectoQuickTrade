@@ -1,5 +1,16 @@
 <resources>
-    <string name="app_name">Quick Trade - Ricardo Borrull</string>
+    <string name="app_name"></string>
+
+    <!-- Campos -->
+    <string name="campo_user">user</string>
+    <string name="campo_nombre">nombre</string>
+    <string name="campo_apellido">apellido</string>
+    <string name="campo_correo">correo</string>
+    <string name="campo_password">password</string>
+    <string name="campo_direccion">direccion</string>
+
+
+
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -12,5 +23,7 @@
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
+
+
     </string>
 </resources>

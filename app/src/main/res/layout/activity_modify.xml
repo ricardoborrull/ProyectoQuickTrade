@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1d1d1b"
-    tools:context="com.example.a2dam.proyectoquicktrade.RegisterActivity">
+    tools:context="com.example.a2dam.proyectoquicktrade.ModifyActivity">
 
     <LinearLayout
         android:layout_width="395dp"
@@ -141,12 +141,12 @@
                 </android.support.design.widget.TextInputLayout>
 
                 <Button
-                    android:id="@+id/email_sign_in_button"
+                    android:id="@+id/modify"
                     style="?android:textAppearanceSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Registrate"
+                    android:text="Modificar"
                     android:textStyle="bold" />
 
             </LinearLayout>
