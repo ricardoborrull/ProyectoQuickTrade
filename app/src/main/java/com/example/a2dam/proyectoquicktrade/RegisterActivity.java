@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.a2dam.proyectoquicktrade.model.Usuario;
+//import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -17,6 +18,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button register;
     private EditText user, nombre, apellido, correo, direccion, password;
     DatabaseReference bbdd;
+    //private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     if (!TextUtils.isEmpty(sPassw)){
 
                                         String clave = bbdd.push().getKey();
+                                        //String clave = "hola";
                                         Usuario u = new Usuario(sUser, sNom, sApe, sCorr, sDir, sPassw);
 
                                         bbdd.child(clave).setValue(u);

@@ -147,7 +147,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="Registrate"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:background="@color/colorAccent"
+                    android:textColor="@android:color/white"/>
 
             </LinearLayout>
         </ScrollView>

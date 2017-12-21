@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 
 import com.google.firebase.database.DatabaseReference;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         users = (Button) findViewById(R.id.users);
         modify = (Button) findViewById(R.id.modify);
 
-        bbdd = (FirebaseDatabase.getInstance().getReference("usuario"));
+        //bbdd = (FirebaseDatabase.getInstance().getReference("usuario"));
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override

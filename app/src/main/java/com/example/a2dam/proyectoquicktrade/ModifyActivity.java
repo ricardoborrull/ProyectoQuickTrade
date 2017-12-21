@@ -3,12 +3,14 @@ package com.example.a2dam.proyectoquicktrade;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.a2dam.proyectoquicktrade.R;
+import com.example.a2dam.proyectoquicktrade.model.Usuario;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,11 +43,12 @@ public class ModifyActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String usuario = user.getText().toString();
+                final String usuario = user.getText().toString();
 
                 if (!TextUtils.isEmpty(usuario)){
                     //Hacemos una query que compare si los campos son iguales
-                    Query q = bbdd.orderByChild(String.valueOf(getString(R.string.campo_user).equalsIgnoreCase(usuario)));
+                    Query q = bbdd.orderByChild(getString(R.string.campo_user)).equalTo(usuario);
+                    Log.e("mitag", q.toString());
 
                     q.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -54,6 +57,7 @@ public class ModifyActivity extends AppCompatActivity {
                                 //Encontramos la "key" en la bbdd "Ej: L0jnF6jj9lhbfSf48Hl" para coger sus datos
                                 String clave = datasnapshot.getKey();
                                 bbdd.child(clave).child(getString(R.string.campo_nombre)).setValue(nombre.getText().toString());
+
                             }
                         }
 

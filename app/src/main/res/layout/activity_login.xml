@@ -57,7 +57,6 @@
                         android:id="@+id/email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/prompt_email"
                         android:inputType="textEmailAddress"
                         android:maxLines="1"
                         android:singleLine="true"
@@ -86,12 +85,14 @@
                 </android.support.design.widget.TextInputLayout>
 
                 <Button
-                    android:id="@+id/email_sign_in_button"
+                    android:id="@+id/login"
                     style="?android:textAppearanceSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:background="@color/colorAccent"
                     android:text="Log In"
+                    android:textColor="@android:color/white"
                     android:textStyle="bold" />
 
             </LinearLayout>
