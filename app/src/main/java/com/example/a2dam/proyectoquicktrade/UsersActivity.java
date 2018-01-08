@@ -40,8 +40,6 @@ public class UsersActivity extends AppCompatActivity {
                     Usuario u = datasnapshot.getValue(Usuario.class);
 
                     String user = u.getUser();
-                    String nombre = u.getNombre();
-                    String apellido = u.getApellidos();
                     listado.add(user);
 
                 }

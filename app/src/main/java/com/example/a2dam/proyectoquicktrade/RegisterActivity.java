@@ -53,8 +53,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 if (!TextUtils.isEmpty(sDir)){
                                     if (!TextUtils.isEmpty(sPassw)){
 
-                                        String clave = bbdd.push().getKey();
-                                        //String clave = "hola";
+
+                                        String clave = sUser;
                                         Usuario u = new Usuario(sUser, sNom, sApe, sCorr, sDir, sPassw);
 
                                         bbdd.child(clave).setValue(u);

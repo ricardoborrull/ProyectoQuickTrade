@@ -1,5 +1,7 @@
 package com.example.a2dam.proyectoquicktrade.model;
 
+import java.util.ArrayList;
+
 /**
  * Created by 2dam on 18/12/2017.
  */
@@ -7,6 +9,7 @@ package com.example.a2dam.proyectoquicktrade.model;
 public class Usuario {
 
     private String user;
+    private ArrayList <Producto> productos;
     private String nombre;
     private String apellidos;
     private String correo;
@@ -17,8 +20,9 @@ public class Usuario {
 
     }
 
-    public Usuario(String user, String nombre, String apellidos, String correo, String direccion, String password) {
+    public Usuario(String user, ArrayList<Producto> productos, String nombre, String apellidos, String correo, String direccion, String password) {
         this.user = user;
+        this.productos = productos;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.correo = correo;
@@ -32,6 +36,14 @@ public class Usuario {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    public ArrayList<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(ArrayList<Producto> productos) {
+        this.productos = productos;
     }
 
     public String getNombre() {
@@ -78,6 +90,7 @@ public class Usuario {
     public String toString() {
         return "Usuario{" +
                 "user='" + user + '\'' +
+                ", productos=" + productos +
                 ", nombre='" + nombre + '\'' +
                 ", apellidos='" + apellidos + '\'' +
                 ", correo='" + correo + '\'' +
