@@ -8,10 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.a2dam.proyectoquicktrade.model.Producto;
 import com.example.a2dam.proyectoquicktrade.model.Usuario;
 //import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -45,6 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String sCorr = correo.getText().toString();
                 String sDir = direccion.getText().toString();
                 String sPassw = password.getText().toString();
+                ArrayList<Producto> sProductos = null;
 
                 if (!TextUtils.isEmpty(sUser)){
                     if (!TextUtils.isEmpty(sNom)){
@@ -55,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
                                         String clave = sUser;
-                                        Usuario u = new Usuario(sUser, sNom, sApe, sCorr, sDir, sPassw);
+                                        Usuario u = new Usuario(sUser, sProductos, sNom, sApe, sCorr, sDir, sPassw);
 
                                         bbdd.child(clave).setValue(u);
 

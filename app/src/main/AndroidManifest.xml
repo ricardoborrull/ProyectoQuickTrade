@@ -26,7 +26,15 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".ModifyActivity" />
         <activity android:name=".NewProductoActivity" />
-        <activity android:name=".ProductosActivity"></activity>
+        <activity android:name=".ProductosActivity" />
+        <activity
+            android:name=".LoginActivity$Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
