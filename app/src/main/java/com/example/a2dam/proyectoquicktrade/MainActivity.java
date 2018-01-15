@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         users = (Button) findViewById(R.id.users);
         modify = (Button) findViewById(R.id.modify);
 
-        //bbdd = (FirebaseDatabase.getInstance().getReference("usuario"));
+       // bbdd = FirebaseDatabase.getInstance().getReference("usuario");
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         users.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, Main2Activity.class);
+                Intent i = new Intent(MainActivity.this, UsersActivity.class);
                 startActivity(i);
             }
         });

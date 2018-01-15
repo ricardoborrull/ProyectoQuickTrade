@@ -10,6 +10,7 @@ public class Producto {
     private String descripcion;
     private String categoria;
     private String precio;
+    private String user;
 
     public Producto(String nombre, String descripcion, String categoria, String precio) {
         this.nombre = nombre;
