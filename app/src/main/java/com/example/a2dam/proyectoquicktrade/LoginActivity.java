@@ -1,5 +1,6 @@
 package com.example.a2dam.proyectoquicktrade;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,6 +42,9 @@ public class LoginActivity extends AppCompatActivity {
 
                 registrar(sEmail, sPassw);
 
+                Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(i);
+
             }
         });
     }
@@ -49,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
 
             mAuth = FirebaseAuth.getInstance();
 
-            mAuth.createUserWithEmailAndPassword(SEmail, SPassw)
+            mAuth.signInWithEmailAndPassword(SEmail, SPassw)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {

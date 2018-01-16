@@ -1,5 +1,6 @@
 package com.example.a2dam.proyectoquicktrade;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -63,6 +64,8 @@ public class RegisterActivity extends AppCompatActivity {
                             user.requestFocus();
                         } else {
                             registrarUsuario();
+                            Intent i = new Intent(RegisterActivity.this, MainActivity.class);
+                            startActivity(i);
                         }
                     }
 
@@ -94,10 +97,10 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser paca = mAuth.getCurrentUser();
-                            userId = paca.getUid();
-                            Toast.makeText(RegisterActivity.this, "Authentication successfull." + paca.getUid(),
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(RegisterActivity.this, "Authentication successfull." + user.getUid(),
                                     Toast.LENGTH_SHORT).show();
+                                    userId = user.getUid().toString();
                         } else {
                             FirebaseUser user = mAuth.getCurrentUser();
                             // If sign in fails, display a message to the user.
@@ -114,7 +117,6 @@ public class RegisterActivity extends AppCompatActivity {
                     if (!TextUtils.isEmpty(sCorr)){
                         if (!TextUtils.isEmpty(sDir)){
                             if (!TextUtils.isEmpty(sPassw)){
-
 
                                 Usuario u = new Usuario(sUser, sNom, sApe, sCorr, sDir, sPassw);
 
