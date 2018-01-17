@@ -28,6 +28,7 @@ public class UsersActivity extends AppCompatActivity {
         lista = (ListView) findViewById(R.id.lista);
 
         bbdd = FirebaseDatabase.getInstance().getReference("usuario");
+
         bbdd.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
