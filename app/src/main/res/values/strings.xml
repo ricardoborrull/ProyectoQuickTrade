@@ -4,7 +4,7 @@
     <!-- Campos -->
     <string name="campo_user">user</string>
     <string name="campo_nombre">nombre</string>
-    <string name="campo_apellido">apellido</string>
+    <string name="campo_apellidos">apellidos</string>
     <string name="campo_correo">correo</string>
     <string name="campo_password">password</string>
     <string name="campo_direccion">direccion</string>

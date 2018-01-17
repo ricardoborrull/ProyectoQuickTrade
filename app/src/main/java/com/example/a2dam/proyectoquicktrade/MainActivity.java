@@ -19,10 +19,13 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseUser firebaseUser;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
 
         perfil = (Button) findViewById(R.id.perfil);
         productos = (Button) findViewById(R.id.productos);
@@ -32,16 +35,18 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
 
+        //Este método identifica si hay algun usuario con la sesión iniciada. En este caso, un toast dirá la uID del usuario
+        //actual activo, en caso de no tener sesión abierta te enviará directamente al login.
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 firebaseUser = firebaseAuth.getCurrentUser();
                 if (firebaseUser == null) {
-                    Toast.makeText(MainActivity.this, " es null", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Sesión cerrada", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(i);
                 } else {
-                    Toast.makeText(MainActivity.this, "No es null", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Sesión actual: "+mAuth.getCurrentUser().getUid(), Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -49,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         perfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, MainActivity.class);
+                Intent i = new Intent(MainActivity.this, PerfilActivity.class);
                 startActivity(i);
             }
         });

@@ -1,68 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="#1d1d1b"
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.02">
+        android:layout_height="79dp">
 
         <RelativeLayout
             android:id="@+id/fotoR"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#1d1d1b">
 
             <ImageView
                 android:id="@+id/foto"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
+                android:layout_margin="10dp"
                 app:srcCompat="@drawable/user" />
 
 
             <RelativeLayout
                 android:id="@+id/relativeLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="19dp"
-                android:layout_marginTop="12dp"
-                android:layout_toRightOf="@+id/foto">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:layout_toEndOf="@+id/foto">
 
                 <TextView
                     android:id="@+id/user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="User" />
-
-                <TextView
-                    android:id="@+id/nom"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="20dp"
-                    android:text="Nombre" />
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+
+                    android:text="User"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/apellido"
+                    android:id="@+id/nombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/nom"
-                    android:layout_alignTop="@+id/nom"
-                    android:layout_marginStart="42dp"
-                    android:layout_toEndOf="@+id/nom"
-                    android:text="Apellido" />
+                    android:layout_alignTop="@+id/user"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="1dp"
+                    android:text="Nombre"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/correo"
+                    android:id="@+id/apellidos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/nom"
-                    android:layout_below="@+id/nom"
-                    android:text="Correo" />
+                    android:layout_alignStart="@+id/nombre"
+                    android:layout_below="@+id/nombre"
+                    android:text="Apellido"
+                    android:textColor="@android:color/white" />
+
             </RelativeLayout>
 
         </RelativeLayout>

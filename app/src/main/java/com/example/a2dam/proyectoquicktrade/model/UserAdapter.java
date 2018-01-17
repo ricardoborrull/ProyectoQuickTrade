@@ -21,7 +21,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     @Override
     public UserViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.activity_users, viewGroup, false);
+                .inflate(R.layout.element, viewGroup, false);
         return new UserViewHolder(v);
     }
 
@@ -38,21 +38,23 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     public static class UserViewHolder extends RecyclerView.ViewHolder {
         // Campos respectivos de un item
-        public TextView user, nombre, apellido, correo;
+        public TextView user, nombre, apellidos;
+                //correo;
 
         public UserViewHolder(View v) {
             super(v);
             user = (TextView) v.findViewById(R.id.user);
-            nombre = (TextView) v.findViewById(R.id.nom);
-            apellido = (TextView) v.findViewById(R.id.apellido);
-            correo = (TextView) v.findViewById(R.id.email);
+            nombre = (TextView) v.findViewById(R.id.nombre);
+            apellidos = (TextView) v.findViewById(R.id.apellidos);
+            //correo = (TextView) v.findViewById(R.id.email);
         }
 
         public void bindUsuario(Usuario item){
+            user.setText(item.getUser().toUpperCase());
             nombre.setText(item.getNombre());
-            apellido.setText(item.getApellidos());
-            correo.setText(item.getCorreo());
-            user.setText(item.getUser());
+            apellidos.setText(item.getApellidos());
+            //correo.setText(item.getCorreo());
+
         }
     }
 }

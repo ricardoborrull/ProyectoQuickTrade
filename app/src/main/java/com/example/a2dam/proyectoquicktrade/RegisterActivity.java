@@ -41,6 +41,8 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
+
         register = (Button) findViewById(R.id.email_sign_in_button);
         user = (EditText) findViewById(R.id.user);
         nombre = (EditText) findViewById(R.id.name);
