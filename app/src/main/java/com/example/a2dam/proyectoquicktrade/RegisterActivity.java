@@ -34,6 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
     DatabaseReference bbdd;
     private FirebaseAuth mAuth;
     String userId;
+    String sUser,sNom ,sApe,sCorr,sDir,sPassw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +65,6 @@ public class RegisterActivity extends AppCompatActivity {
                             user.requestFocus();
                         } else {
                             registrarUsuario();
-                            Intent i = new Intent(RegisterActivity.this, MainActivity.class);
-                            startActivity(i);
                         }
                     }
 
@@ -82,34 +81,14 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void registrarUsuario() {
-        String sUser = user.getText().toString().toLowerCase();
-        String sNom = nombre.getText().toString();
-        String sApe = apellido.getText().toString();
-        String sCorr = correo.getText().toString();
-        String sDir = direccion.getText().toString();
-        String sPassw = password.getText().toString();
+        sUser = user.getText().toString().toLowerCase();
+        sNom = nombre.getText().toString();
+        sApe = apellido.getText().toString();
+        sCorr = correo.getText().toString();
+        sDir = direccion.getText().toString();
+        sPassw = password.getText().toString();
 
         mAuth = FirebaseAuth.getInstance();
-
-        mAuth.createUserWithEmailAndPassword(sCorr, sPassw)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(RegisterActivity.this, "Authentication successfull." + user.getUid(),
-                                    Toast.LENGTH_SHORT).show();
-                                    userId = user.getUid().toString();
-                        } else {
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(RegisterActivity.this, "Authentication failed." + task.getException(),
-                                    Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-
 
         if (!TextUtils.isEmpty(sUser)){
             if (!TextUtils.isEmpty(sNom)){
@@ -118,11 +97,34 @@ public class RegisterActivity extends AppCompatActivity {
                         if (!TextUtils.isEmpty(sDir)){
                             if (!TextUtils.isEmpty(sPassw)){
 
-                                Usuario u = new Usuario(sUser, sNom, sApe, sCorr, sDir, sPassw);
+                                mAuth.createUserWithEmailAndPassword(sCorr, sPassw)
+                                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                                if (task.isSuccessful()) {
+                                                    // Sign in success, update UI with the signed-in user's information
+                                                    FirebaseUser user = mAuth.getCurrentUser();
+                                                    Toast.makeText(RegisterActivity.this, "Authentication successfull." + user.getUid(),
+                                                            Toast.LENGTH_SHORT).show();
+                                                    userId = user.getUid();
+                                                    Usuario u = new Usuario(sUser, sNom, sApe, sCorr, sDir, sPassw);
+                                                    Toast.makeText(RegisterActivity.this, userId , Toast.LENGTH_SHORT).show();
+                                                    bbdd.child(userId).setValue(u);
 
-                                bbdd.child(userId).setValue(u);
+                                                    mAuth.signOut();
 
-                                Toast.makeText(RegisterActivity.this, "¡Registro completado!", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(RegisterActivity.this, "¡Registro completado!", Toast.LENGTH_SHORT).show();
+
+                                                    Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+                                                    startActivity(i);
+                                                } else {
+                                                    FirebaseUser user = mAuth.getCurrentUser();
+                                                    // If sign in fails, display a message to the user.
+                                                    Toast.makeText(RegisterActivity.this, "Authentication failed." + task.getException(),
+                                                            Toast.LENGTH_LONG).show();
+                                                }
+                                            }
+                                        });
                             } else {
                                 Toast.makeText(RegisterActivity.this, "Debes introducir una contraseña", Toast.LENGTH_SHORT).show();
                             }
@@ -141,5 +143,10 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             Toast.makeText(RegisterActivity.this, "Debes introducir un nombre de usuario", Toast.LENGTH_SHORT).show();
         }
+
+
+
+
+
     }
 }

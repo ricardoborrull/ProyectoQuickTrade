@@ -1,44 +1,63 @@
 package com.example.a2dam.proyectoquicktrade;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button login, registrar, users, modify;
-    DatabaseReference bbdd;
+    Button perfil, productos, users, logout;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        login = (Button) findViewById(R.id.login);
-        registrar = (Button) findViewById(R.id.registrar);
+        perfil = (Button) findViewById(R.id.perfil);
+        productos = (Button) findViewById(R.id.productos);
         users = (Button) findViewById(R.id.users);
-        modify = (Button) findViewById(R.id.modify);
+        logout = (Button) findViewById(R.id.logout);
 
-       // bbdd = FirebaseDatabase.getInstance().getReference("usuario");
+        mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
 
-        login.setOnClickListener(new View.OnClickListener() {
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                firebaseUser = firebaseAuth.getCurrentUser();
+                if (firebaseUser == null) {
+                    Toast.makeText(MainActivity.this, " es null", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(MainActivity.this, "No es null", Toast.LENGTH_SHORT).show();
+                }
+            }
+        };
+
+        perfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                Intent i = new Intent(MainActivity.this, MainActivity.class);
                 startActivity(i);
             }
         });
 
-        registrar.setOnClickListener(new View.OnClickListener() {
+        productos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, Main2Activity.class);
+                Intent i = new Intent(MainActivity.this, ProductosActivity.class);
                 startActivity(i);
             }
         });
@@ -51,13 +70,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        modify.setOnClickListener(new View.OnClickListener() {
+        logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, ModifyActivity.class);
-                startActivity(i);
+                mAuth.signOut();
             }
         });
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 }

@@ -22,18 +22,18 @@
             app:srcCompat="@drawable/otrologo" />
 
         <Button
-            android:id="@+id/login"
+            android:id="@+id/perfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Login" />
+            android:text="Perfil" />
 
         <Button
-            android:id="@+id/registrar"
+            android:id="@+id/productos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Registrar" />
+            android:text="Productos" />
 
         <Button
             android:id="@+id/users"
@@ -43,11 +43,11 @@
             android:text="Usuarios" />
 
         <Button
-            android:id="@+id/modify"
+            android:id="@+id/logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Modificar" />
+            android:text="Cerrar Sesión" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

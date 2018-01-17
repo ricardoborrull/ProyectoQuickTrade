@@ -2,9 +2,12 @@ package com.example.a2dam.proyectoquicktrade;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.a2dam.proyectoquicktrade.model.UserAdapter;
 import com.example.a2dam.proyectoquicktrade.model.Usuario;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,14 +21,16 @@ import java.util.ArrayList;
 public class UsersActivity extends AppCompatActivity {
 
     DatabaseReference bbdd;
-    ListView lista;
+    private RecyclerView recycler;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager lManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users);
 
-        lista = (ListView) findViewById(R.id.lista);
+        recycler = (RecyclerView) findViewById(R.id.recycler);
 
         bbdd = FirebaseDatabase.getInstance().getReference("usuario");
 
@@ -33,20 +38,18 @@ public class UsersActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                ArrayAdapter<String> adapter;
-                ArrayList<String> listado = new ArrayList<String>();
+                UserAdapter adaptador;
+                ArrayList<Usuario> listado = new ArrayList<Usuario>();
 
 
                 for (DataSnapshot datasnapshot: dataSnapshot.getChildren()){
                     Usuario u = datasnapshot.getValue(Usuario.class);
-
-                    String user = u.getUser();
-                    listado.add(user);
+                    listado.add(u);
 
                 }
 
-                adapter = new ArrayAdapter<String>(UsersActivity.this, android.R.layout.simple_list_item_1, listado);
-                lista.setAdapter(adapter);
+                adapter = new UserAdapter(listado);
+                recycler.setAdapter(adapter);
 
             }
 
@@ -54,7 +57,9 @@ public class UsersActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
+
         });
 
+        recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     }
 }

@@ -20,7 +20,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-    private Button login;
+    private Button login, register;
     private EditText email, password;
     DatabaseReference bbdd;
 
@@ -29,7 +29,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        login = (Button) findViewById(R.id.login);
+        login = (Button) findViewById(R.id.perfil);
+        register = (Button) findViewById(R.id.register);
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
 
@@ -40,16 +41,21 @@ public class LoginActivity extends AppCompatActivity {
                 String sEmail = email.getText().toString();
                 String sPassw = password.getText().toString();
 
-                registrar(sEmail, sPassw);
+                loguear(sEmail, sPassw);
 
-                Intent i = new Intent(LoginActivity.this, MainActivity.class);
+            }
+        });
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(i);
-
             }
         });
     }
 
-        private void registrar(String SEmail, String SPassw) {
+        private void loguear(String SEmail, String SPassw) {
 
             mAuth = FirebaseAuth.getInstance();
 
@@ -62,6 +68,10 @@ public class LoginActivity extends AppCompatActivity {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 Toast.makeText(LoginActivity.this, "Authentication successfull."+user.getUid(),
                                         Toast.LENGTH_SHORT).show();
+
+                                Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(i);
+
                             } else {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 // If sign in fails, display a message to the user.
