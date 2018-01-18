@@ -20,6 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class NewProductoActivity extends AppCompatActivity {
 
@@ -45,6 +46,8 @@ public class NewProductoActivity extends AppCompatActivity {
         hogar = (RadioButton) findViewById(R.id.hogar);
         precio = (EditText) findViewById(R.id.precio);
         subir = (Button) findViewById(R.id.subir);
+
+        bbdd = (FirebaseDatabase.getInstance().getReference("producto"));
 
         getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
 
@@ -93,7 +96,7 @@ public class NewProductoActivity extends AppCompatActivity {
                     FirebaseUser user = mAuth.getCurrentUser();
                     userId = user.getUid();
                     Producto p = new Producto(sNom, sDesc, sCat, sPre, sUser);
-                    String clave = sNom;
+                    String clave = sNom+sUser;
                     bbdd.child(clave).setValue(p);
 
 

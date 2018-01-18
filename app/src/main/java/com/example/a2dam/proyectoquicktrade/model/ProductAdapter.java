@@ -38,7 +38,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
         // Campos respectivos de un item
-        public TextView nombre, categoria, precio;
+        public TextView nombre, categoria, precio, desc;
 
 
         public ProductViewHolder(View v) {
@@ -46,14 +46,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             nombre = (TextView) v.findViewById(R.id.nombre);
             categoria = (TextView) v.findViewById(R.id.categoria);
             precio = (TextView) v.findViewById(R.id.precio);
+            desc = (TextView) v.findViewById(R.id.desc);
+
 
         }
 
-        public void bindProducto(Producto item){
+        public void bindProducto(Producto item) {
             nombre.setText(item.getNombre().toUpperCase());
             categoria.setText(item.getCategoria());
-            precio.setText(item.getPrecio());
-
+            precio.setText(item.getPrecio()+" €");
+            desc.setText(item.getDescripcion());
 
         }
     }
