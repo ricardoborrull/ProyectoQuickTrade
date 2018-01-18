@@ -84,25 +84,24 @@ public class NewProductoActivity extends AppCompatActivity {
         sNom = nombre.getText().toString();
         sPre = precio.getText().toString();
         sDesc = descripcion.getText().toString();
-        sUser = userId;
+        //sUser = userId;
 
         mAuth = FirebaseAuth.getInstance();
-
 
         if (!TextUtils.isEmpty(sNom)) {
             if (!TextUtils.isEmpty(sCat)) {
                 if (!TextUtils.isEmpty(sPre)) {
 
                     FirebaseUser user = mAuth.getCurrentUser();
-                    userId = user.getUid();
+                    sUser = user.getUid();
                     Producto p = new Producto(sNom, sDesc, sCat, sPre, sUser);
-                    String clave = sNom+sUser;
+                    String clave = bbdd.push().getKey();
                     bbdd.child(clave).setValue(p);
 
 
                     Toast.makeText(NewProductoActivity.this, "¡Producto subido!", Toast.LENGTH_SHORT).show();
 
-                    Intent i = new Intent(NewProductoActivity.this, ProductosActivity.class);
+                    Intent i = new Intent(NewProductoActivity.this, MainActivity.class);
                     startActivity(i);
 
                 } else {

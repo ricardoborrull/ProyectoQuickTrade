@@ -1,5 +1,6 @@
 package com.example.a2dam.proyectoquicktrade.model;
 
+import android.net.sip.SipAudioCall;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,17 +12,23 @@ import com.example.a2dam.proyectoquicktrade.R;
 import java.util.List;
 
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> implements View.OnClickListener {
     private List<Producto> items;
+    private View.OnClickListener listener;
 
     public ProductAdapter(List<Producto> items) {
         this.items = items;
+    }
+
+    public void setOnClickListener(View.OnClickListener listener) {
+        this.listener = listener;
     }
 
     @Override
     public ProductViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.producto, viewGroup, false);
+        v.setOnClickListener(this);
         return new ProductViewHolder(v);
     }
 
@@ -49,6 +56,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             desc = (TextView) v.findViewById(R.id.desc);
 
 
+
         }
 
         public void bindProducto(Producto item) {
@@ -58,5 +66,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             desc.setText(item.getDescripcion());
 
         }
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(listener != null)
+            listener.onClick(view);
     }
 }

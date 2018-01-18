@@ -4,8 +4,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.ToggleButton;
 
+import com.example.a2dam.proyectoquicktrade.model.Producto;
 import com.example.a2dam.proyectoquicktrade.model.Usuario;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -15,10 +17,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class PerfilActivity extends AppCompatActivity {
+public class InfoProductosActivity extends AppCompatActivity {
 
     private ToggleButton modify;
-    private EditText user, nombre, apellido, correo, direccion;
+    private EditText nombre, descripcion, precio;
+    private RadioButton tecnologia, hogar, coche;
     DatabaseReference bbdd;
     private FirebaseAuth mAuth;
     private FirebaseUser firebaseUser;
@@ -26,7 +29,7 @@ public class PerfilActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_perfil);
+        setContentView(R.layout.activity_info_productos);
 
         getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
 
@@ -35,24 +38,25 @@ public class PerfilActivity extends AppCompatActivity {
         bbdd = (FirebaseDatabase.getInstance().getReference("usuario").child(firebaseUser.getUid()));
 
         modify = (ToggleButton) findViewById(R.id.modify);
-        user = (EditText) findViewById(R.id.nombre);
-        nombre = (EditText) findViewById(R.id.name);
-        apellido = (EditText) findViewById(R.id.apellido);
-        correo = (EditText) findViewById(R.id.correo);
-        direccion = (EditText) findViewById(R.id.direccion);
+        nombre = (EditText) findViewById(R.id.nombre);
+        descripcion = (EditText) findViewById(R.id.desc);
+        precio = (EditText) findViewById(R.id.precio);
+        tecnologia = (RadioButton) findViewById(R.id.tecnologia);
+        coche = (RadioButton) findViewById(R.id.coche);
+        hogar = (RadioButton) findViewById(R.id.hogar);
 
-
-        user.setEnabled(false);
-        correo.setEnabled(false);
         nombre.setEnabled(false);
-        apellido.setEnabled(false);
-        direccion.setEnabled(false);
+        descripcion.setEnabled(false);
+        precio.setEnabled(false);
+        tecnologia.setEnabled(false);
+        coche.setEnabled(false);
+        hogar.setEnabled(false);
 
 
         bbdd.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                bindInfoUsuario(dataSnapshot);
+                bindInfoProducto(dataSnapshot);
             }
 
             @Override
@@ -61,40 +65,30 @@ public class PerfilActivity extends AppCompatActivity {
             }
         });
 
-        modify.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        /*modify.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
 
                     nombre.setEnabled(true);
-                    apellido.setEnabled(true);
-                    direccion.setEnabled(true);
 
                 } else {
 
                     nombre.setEnabled(false);
-                    apellido.setEnabled(false);
-                    direccion.setEnabled(false);
 
                     String sNombre = nombre.getText().toString();
-                    String sApellidos = apellido.getText().toString();
-                    String sDireccion = direccion.getText().toString();
 
                     bbdd.child(getString(R.string.campo_nombre)).setValue(sNombre);
-                    bbdd.child(getString(R.string.campo_apellidos)).setValue(sApellidos);
-                    bbdd.child(getString(R.string.campo_direccion)).setValue(sDireccion);
                 }
             }
-        });
+        });*/
     }
 
-        //Aquí se rellena la información del usuario
-        private void bindInfoUsuario(DataSnapshot dataSnapshot) {
-            Usuario u = dataSnapshot.getValue(Usuario.class);
-            user.setText(u.getUser().toUpperCase());
-            nombre.setText(u.getNombre());
-            apellido.setText(u.getApellidos());
-            correo.setText(firebaseUser.getEmail());
-            direccion.setText(u.getDireccion());
+    //Aquí se rellena la información del usuario
+    private void bindInfoProducto(DataSnapshot dataSnapshot) {
+        Producto p = dataSnapshot.getValue(Producto.class);
+        nombre.setText(p.getNombre().toUpperCase());
+        descripcion.setText(p.getDescripcion());
+        precio.setText(p.getPrecio());
     }
 }

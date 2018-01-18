@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.a2dam.proyectoquicktrade.model.ProductAdapter;
 import com.example.a2dam.proyectoquicktrade.model.Producto;
@@ -18,12 +19,13 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ProductosActivity extends AppCompatActivity {
+public class ProductosActivity extends AppCompatActivity{
 
     private Button newP;
     DatabaseReference bbdd;
     private RecyclerView recycler;
-    private RecyclerView.Adapter adaptador;
+    //private RecyclerView.Adapter adaptador;
+    ProductAdapter adaptador;
 
 
     @Override
@@ -43,14 +45,12 @@ public class ProductosActivity extends AppCompatActivity {
             }
         });
 
-
         recycler = (RecyclerView) findViewById(R.id.recycler);
-        bbdd = FirebaseDatabase.getInstance().getReference("producto");
+        bbdd = FirebaseDatabase.getInstance().getReference().child("producto");
 
         bbdd.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                ProductAdapter adaptador;
                 ArrayList<Producto> listado = new ArrayList<>();
 
                 for (DataSnapshot datasnapshot: dataSnapshot.getChildren()){
@@ -58,7 +58,16 @@ public class ProductosActivity extends AppCompatActivity {
                     listado.add(p);
                 }
                 adaptador = new ProductAdapter(listado);
+                adaptador.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(ProductosActivity.this, "Has hecho click", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getApplicationContext(), InfoProductosActivity.class);
+                        startActivity(i);
+                    }
+                });
                 recycler.setAdapter(adaptador);
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -66,4 +75,5 @@ public class ProductosActivity extends AppCompatActivity {
         });
         recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     }
+
 }

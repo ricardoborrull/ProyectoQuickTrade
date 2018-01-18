@@ -26,9 +26,9 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".PerfilActivity" />
         <activity android:name=".NewProductoActivity" />
-        <activity android:name=".ProductosActivity" /><![CDATA[
+        <activity android:name=".ProductosActivity" />
         />
-    ]]>
+        <activity android:name=".InfoProductosActivity"></activity>
     </application>
 
 </manifest>
