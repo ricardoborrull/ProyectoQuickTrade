@@ -39,21 +39,21 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     public static class UserViewHolder extends RecyclerView.ViewHolder {
         // Campos respectivos de un item
         public TextView user, nombre, apellidos;
-                //correo;
+
 
         public UserViewHolder(View v) {
             super(v);
-            user = (TextView) v.findViewById(R.id.user);
-            nombre = (TextView) v.findViewById(R.id.nombre);
+            user = (TextView) v.findViewById(R.id.nombre);
+            nombre = (TextView) v.findViewById(R.id.categoria);
             apellidos = (TextView) v.findViewById(R.id.apellidos);
-            //correo = (TextView) v.findViewById(R.id.email);
+
         }
 
         public void bindUsuario(Usuario item){
             user.setText(item.getUser().toUpperCase());
             nombre.setText(item.getNombre());
             apellidos.setText(item.getApellidos());
-            //correo.setText(item.getCorreo());
+
 
         }
     }

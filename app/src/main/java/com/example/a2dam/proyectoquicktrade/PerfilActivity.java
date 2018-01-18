@@ -2,13 +2,8 @@ package com.example.a2dam.proyectoquicktrade;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.a2dam.proyectoquicktrade.model.Usuario;
@@ -18,7 +13,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class PerfilActivity extends AppCompatActivity {
@@ -42,7 +36,7 @@ public class PerfilActivity extends AppCompatActivity {
         bbdd = (FirebaseDatabase.getInstance().getReference("usuario").child(firebaseUser.getUid()));
 
         modify = (ToggleButton) findViewById(R.id.modify);
-        user = (EditText) findViewById(R.id.user);
+        user = (EditText) findViewById(R.id.nombre);
         nombre = (EditText) findViewById(R.id.name);
         apellido = (EditText) findViewById(R.id.apellido);
         correo = (EditText) findViewById(R.id.correo);

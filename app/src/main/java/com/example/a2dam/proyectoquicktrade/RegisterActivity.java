@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.a2dam.proyectoquicktrade.model.Producto;
 import com.example.a2dam.proyectoquicktrade.model.Usuario;
 //import com.google.firebase.auth.FirebaseAuth;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,8 +23,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -44,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
 
         register = (Button) findViewById(R.id.email_sign_in_button);
-        user = (EditText) findViewById(R.id.user);
+        user = (EditText) findViewById(R.id.nombre);
         nombre = (EditText) findViewById(R.id.name);
         apellido = (EditText) findViewById(R.id.apellido);
         correo = (EditText) findViewById(R.id.correo);
@@ -75,9 +72,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                     }
                 });
-
-
-
             }
         });
     }

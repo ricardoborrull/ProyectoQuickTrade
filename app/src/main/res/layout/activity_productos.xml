@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.a2dam.proyectoquicktrade.ProductosActivity"
-    android:orientation="vertical">
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context="com.example.a2dam.proyectoquicktrade.ProductosActivity">
 
     <Button
         android:id="@+id/newP"
@@ -18,4 +19,9 @@
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp" />
 </LinearLayout>

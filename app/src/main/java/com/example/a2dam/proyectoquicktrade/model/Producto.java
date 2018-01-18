@@ -12,11 +12,16 @@ public class Producto {
     private String precio;
     private String user;
 
-    public Producto(String nombre, String descripcion, String categoria, String precio) {
+    public Producto(){
+
+    }
+
+    public Producto(String nombre, String descripcion, String categoria, String precio, String user) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.categoria = categoria;
         this.precio = precio;
+        this.user = user;
     }
 
     public String getNombre() {
@@ -51,6 +56,14 @@ public class Producto {
         this.precio = precio;
     }
 
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Producto{" +
@@ -58,6 +71,7 @@ public class Producto {
                 ", descripcion='" + descripcion + '\'' +
                 ", categoria='" + categoria + '\'' +
                 ", precio='" + precio + '\'' +
+                ", user='" + user + '\'' +
                 '}';
     }
 }
