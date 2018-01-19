@@ -84,7 +84,6 @@ public class NewProductoActivity extends AppCompatActivity {
         sNom = nombre.getText().toString();
         sPre = precio.getText().toString();
         sDesc = descripcion.getText().toString();
-        //sUser = userId;
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -94,8 +93,8 @@ public class NewProductoActivity extends AppCompatActivity {
 
                     FirebaseUser user = mAuth.getCurrentUser();
                     sUser = user.getUid();
-                    Producto p = new Producto(sNom, sDesc, sCat, sPre, sUser);
                     String clave = bbdd.push().getKey();
+                    Producto p = new Producto(sNom, sDesc, sCat, sPre, sUser, clave);
                     bbdd.child(clave).setValue(p);
 
 
@@ -105,13 +104,13 @@ public class NewProductoActivity extends AppCompatActivity {
                     startActivity(i);
 
                 } else {
-                    Toast.makeText(NewProductoActivity.this, "Debes introducir una contraseña", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(NewProductoActivity.this, "Debes introducir un precio", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                Toast.makeText(NewProductoActivity.this, "Debes introducir una dirección", Toast.LENGTH_SHORT).show();
+                Toast.makeText(NewProductoActivity.this, "Debes introducir una categoría", Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(NewProductoActivity.this, "Debes introducir un correo electrónico", Toast.LENGTH_SHORT).show();
+            Toast.makeText(NewProductoActivity.this, "Debes introducir un nombre", Toast.LENGTH_SHORT).show();
         }
     }
 }

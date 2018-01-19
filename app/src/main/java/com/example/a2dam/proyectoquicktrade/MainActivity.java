@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent i = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(i);
                 } else {
-                    Toast.makeText(MainActivity.this, "Sesión actual: "+mAuth.getCurrentUser().getUid(), Toast.LENGTH_SHORT).show();
+
                 }
             }
         };

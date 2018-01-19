@@ -33,7 +33,7 @@
                 android:text="Nombre"
                 android:textAlignment="center"
                 android:textColor="?attr/colorAccent"
-                android:textSize="24sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -43,13 +43,24 @@
                 android:hint="Descripción"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
-                android:textColorHint="@android:color/white" />
+                android:textColorHint="@android:color/white"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/cat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Categoría"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
 
             <RadioGroup
                 android:id="@+id/categoria"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="120dp"
+                android:orientation="horizontal"
                 android:textAlignment="center">
 
                 <RadioButton
@@ -89,10 +100,11 @@
                 android:inputType="number"
                 android:text="Precio"
                 android:textAlignment="center"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
 
             <ToggleButton
-                android:id="@+id/toggleButton"
+                android:id="@+id/modify"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

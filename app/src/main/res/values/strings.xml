@@ -9,6 +9,13 @@
     <string name="campo_password">password</string>
     <string name="campo_direccion">direccion</string>
 
+    <string name="campo_nombre_p">nombrep</string>
+    <string name="campo_descripcion">descripcion</string>
+    <string name="campo_precio">precio</string>
+    <string name="campo_categoria">categoria</string>
+    <string name="campo_user_p">userp</string>
+    <string name="campo_key">key</string>
+
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

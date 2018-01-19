@@ -11,17 +11,19 @@ public class Producto {
     private String categoria;
     private String precio;
     private String user;
+    private String key;
 
     public Producto(){
 
     }
 
-    public Producto(String nombre, String descripcion, String categoria, String precio, String user) {
+    public Producto(String nombre, String descripcion, String categoria, String precio, String user, String key) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.categoria = categoria;
         this.precio = precio;
         this.user = user;
+        this.key = key;
     }
 
     public String getNombre() {
@@ -64,14 +66,25 @@ public class Producto {
         this.user = user;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     @Override
     public String toString() {
         return "Producto{" +
-                "nombre='" + nombre + '\'' +
+                "nombrep='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", categoria='" + categoria + '\'' +
                 ", precio='" + precio + '\'' +
-                ", user='" + user + '\'' +
+                ", userp='" + user + '\'' +
+                ", key='" + key + '\'' +
                 '}';
     }
+
+
 }
