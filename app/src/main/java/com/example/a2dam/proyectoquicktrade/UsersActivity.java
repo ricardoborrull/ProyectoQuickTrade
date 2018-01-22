@@ -22,6 +22,7 @@ public class UsersActivity extends AppCompatActivity {
     private RecyclerView.Adapter adaptador;
     private RecyclerView.LayoutManager lManager;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

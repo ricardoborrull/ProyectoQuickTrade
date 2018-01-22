@@ -53,8 +53,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             user.setText(item.getUser().toUpperCase());
             nombre.setText(item.getNombre());
             apellidos.setText(item.getApellidos());
-
-
         }
     }
 }
