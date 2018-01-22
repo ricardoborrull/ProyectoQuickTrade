@@ -115,9 +115,8 @@ public class ProductosActivity extends AppCompatActivity{
                         uno.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
-
+                                listado.clear();
                                 for (DataSnapshot datasnapshot: dataSnapshot.getChildren()){
-                                    listado.clear();
                                     Producto p = datasnapshot.getValue(Producto.class);
                                     listado.add(p);
                                 }
@@ -245,6 +244,7 @@ public class ProductosActivity extends AppCompatActivity{
                         break;
                     case 5:
                         BuscaID();
+                        break;
                 }
             }
 
