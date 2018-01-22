@@ -33,7 +33,7 @@ import java.util.ArrayList;
 public class ProductosActivity extends AppCompatActivity{
 
     private Button newP;
-    DatabaseReference bbdd;
+    DatabaseReference bbdd, bbdd2, clave;
     private RecyclerView recycler;
     ProductAdapter adaptador;
     private Spinner spinner;
@@ -41,12 +41,9 @@ public class ProductosActivity extends AppCompatActivity{
     private FirebaseUser firebaseUser;
     ArrayAdapter<String> comboAdapter;
     private String seleccion;
-    String filtros[] = {"Ver todo", "Mis productos", "Por Categoría: Tecnología","Por Categoría: Hogar","Por Categoría: Coche", "Por Usuario"};
-    String categorias[] = {"Tecnología", "Hogar", "Coche"};
+    String filtros[] = {"Ver todo", "Mis productos", "Por Categoría: Tecnología",
+            "Por Categoría: Hogar","Por Categoría: Coche", "Por Usuario", "Mis favoritos"};
     private ArrayList<Producto> listado = new ArrayList<>();
-    private ArrayList<Producto> listadofiltrado = new ArrayList<>();
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

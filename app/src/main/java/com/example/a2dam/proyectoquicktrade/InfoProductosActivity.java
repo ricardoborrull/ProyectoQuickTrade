@@ -27,11 +27,11 @@ public class InfoProductosActivity extends AppCompatActivity {
 
     private ToggleButton modify;
     private TextView cat;
-    private Button borrar;
+    private Button borrar, favs;
     private EditText nombre, descripcion, precio;
     private RadioGroup categoria;
     private RadioButton tecnologia, hogar, coche;
-    DatabaseReference bbdd;
+    DatabaseReference bbdd, bbdd2;
     private FirebaseAuth mAuth;
     private FirebaseUser firebaseUser;
     private String id, key, opcion, sNombre, sCat, sDesc, sPre;
@@ -50,10 +50,12 @@ public class InfoProductosActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
         bbdd = (FirebaseDatabase.getInstance().getReference("producto").child(key));
+        bbdd2 = (FirebaseDatabase.getInstance().getReference("usuario").child(firebaseUser.getUid()).child("favorito"));
 
         modify = (ToggleButton) findViewById(R.id.modify);
         cat = (TextView) findViewById(R.id.cat);
         borrar = (Button) findViewById(R.id.delete);
+        favs = (Button) findViewById(R.id.favs);
         nombre = (EditText) findViewById(R.id.nombre);
         descripcion = (EditText) findViewById(R.id.desc);
         precio = (EditText) findViewById(R.id.precio);
@@ -79,6 +81,25 @@ public class InfoProductosActivity extends AppCompatActivity {
             borrar.setVisibility(View.INVISIBLE);
             modify.setVisibility(View.INVISIBLE);
         }
+
+        favs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bbdd2.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        bbdd2.child(key).setValue(key);
+                        finish();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
+
 
         borrar.setOnClickListener(new View.OnClickListener() {
             @Override

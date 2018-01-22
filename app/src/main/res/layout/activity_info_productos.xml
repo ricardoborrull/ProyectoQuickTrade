@@ -103,6 +103,18 @@
                 android:textColor="@android:color/white"
                 android:textSize="24sp" />
 
+            <Button
+                android:id="@+id/favs"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorAccent"
+                android:text="Añadir a Favoritos"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
             <ToggleButton
                 android:id="@+id/modify"
                 android:layout_width="match_parent"

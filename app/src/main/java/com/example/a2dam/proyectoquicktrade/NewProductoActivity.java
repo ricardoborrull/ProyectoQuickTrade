@@ -96,7 +96,7 @@ public class NewProductoActivity extends AppCompatActivity {
                     String clave = bbdd.push().getKey();
                     Producto p = new Producto(sNom, sDesc, sCat, sPre, sUser, clave);
                     bbdd.child(clave).setValue(p);
-
+                    finish();
 
                     Toast.makeText(NewProductoActivity.this, "¡Producto subido!", Toast.LENGTH_SHORT).show();
 
